@@ -1,0 +1,40 @@
+create database parcelmanagementsystem;
+use parcelmanagementsystem;
+CREATE TABLE tbl_UserProfile(
+UserId int unsigned not null auto_increment primary key,
+UserName Varchar(20) Unique not null,
+FullName VARCHAR(100) NOT NULL,
+Address VARCHAR(255) NOT NULL,
+Email VARCHAR(100) NOT NULL,
+MobileNumber VARCHAR(15),
+Password VARCHAR(255) NOT NULL,
+Role VARCHAR(50)NOT NULL,
+Preferences VARCHAR(255) NOT NULL
+)engine=InnoDB auto_increment=10000;
+
+CREATE TABLE tbl_Booking (
+    BookingId bigint unsigned not null auto_increment primary key,
+    UserID int unsigned not null,
+    RecName VARCHAR(100) NOT NULL,
+    RecAddress VARCHAR(255) NOT NULL,
+    RecPin VARCHAR (10) NOT NULL,
+    RecMobile VARCHAR(15) NOT NULL,
+    ParWeightGram DECIMAL(10,2) NOT NULL,
+    ParContentDescription VARCHAR(255),
+    ParDeliveryType VARCHAR(50),
+    ParPackingPreference VARCHAR(50),
+    ParPickupTime DATETIME,
+    ParDropoffTime DATETIME,
+    ParServiceCost DECIMAL(10,2),
+    ParPaymentTime DATETIME,
+    ParStatus VARCHAR(50),
+    ParLastUpdateTime DATETIME,
+    CardNumber varchar(16),
+    CardHolderName varchar(20),
+    ExpiryDate varchar(10),
+    CVV varchar(3),
+    CONSTRAINT fk_user FOREIGN KEY (UserID) REFERENCES tbl_UserProfile(UserID)
+    )engine=InnoDB auto_increment=1000000000;
+
+SELECT * FROM tbl_UserProfile;
+select * from tbl_booking;
